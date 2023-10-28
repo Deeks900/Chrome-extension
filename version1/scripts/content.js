@@ -20,8 +20,8 @@ recognition.onstart = ()=>{
     recognition.lang = "en-IN"
 }
 
-showPopup = ()=>{
-    Popup = new Popup({
+showPopup = function(){
+    const myPopup = new Popup({
         id:"curious-popup",
         title:"This is what you said-",
         content:final_transcript,
@@ -29,7 +29,7 @@ showPopup = ()=>{
         fontSizeMultiplier: "1.2",
         backgroundColor: "#FFFEE3",
     })
-    Popup.show()
+    myPopup.show()
     hideCallback: () => {
         console.log("Popup closed!");
     }
