@@ -11,39 +11,23 @@ var recognition = new webkitSpeechRecognition();
 recognition.continuous = true;
 //interim results may change
 recognition.interimResults = true;
-var final_transcript=''
+console.log("I am called!")
+var final_transcript=""
 
 //When it starts listening
 recognition.onstart = ()=>{
     console.log("START speaking!")
-    final_transcript=''
     recognition.lang = "en-IN"
 }
 
-showPopup = function(){
-    const myPopup = new Popup({
-        id:"curious-popup",
-        title:"This is what you said-",
-        content:final_transcript,
-        sideMargin: "1.5em",
-        fontSizeMultiplier: "1.2",
-        backgroundColor: "#FFFEE3",
-    })
-    myPopup.show()
-    hideCallback: () => {
-        console.log("Popup closed!");
-    }
-}
-
-//When it ends listening
-recognition.onend = ()=>{
-    showPopup()
+recognition.onend = function(){
+    console.log("I am at the end.")
+    Popup()
 }
 
 //This will run whenever it will be recognizing even a single word
 recognition.onresult = function(event) {
     var interim_transcript = '';
-
     for (var i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
             final_transcript += event.results[i][0].transcript;
@@ -51,12 +35,37 @@ recognition.onresult = function(event) {
             interim_transcript += event.results[i][0].transcript;
         }
     }
+    console.log(`t is ${final_transcript}`)
 };
 
+function Popup() {
+    var myDialog = document.createElement("dialog");
+    myDialog.setAttribute("id", "modal")
+    document.body.appendChild(myDialog)
+    var text1 = document.createElement("div")
+    text1.setAttribute("id", "modal-heading")
+    text1.innerHTML="This is what you said:-"
+    var text2 = document.createElement("p")
+    text2.setAttribute("id", "modal-text")
+    text2.innerText=final_transcript
+    var button = document.createElement("BUTTON");
+    var buttonText = document.createTextNode("Okay")
+    button.addEventListener("click", ()=>{myDialog.close()})
+    button.appendChild(buttonText)
+    button.setAttribute("id", "modal-button")
+    var docFrag = document.createDocumentFragment()
+    docFrag.appendChild(text1)
+    docFrag.appendChild(text2)
+    docFrag.appendChild(button)
+    myDialog.appendChild(docFrag) 
+    myDialog.showModal();
+  }
+  
 
 function doListen(){
     if(image.hasAttribute("listening") == false){
         image.setAttribute("listening", true)
+        final_transcript = "";
         recognition.start()
     }
     else{

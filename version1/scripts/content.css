@@ -37,3 +37,35 @@
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
     }
   }
+
+#modal{
+    background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.4);
+	padding: 30px 50px;
+	width: 600px;
+	max-width: 100%;
+	text-align: center;
+}
+
+#modal-heading{
+    font-size: 20px;
+    font-family:sans-serif;
+    padding-bottom: 2px;
+}
+
+#modal-text{
+    font-size: 14px;
+	opacity: 0.7;
+}
+#modal-button{
+    margin-top:2px;
+    background-color: #9febb7;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px 20px;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+	font-weight: 600;
+	font-family: sans-serif;
+}
