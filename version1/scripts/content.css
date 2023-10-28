@@ -1,0 +1,39 @@
+
+#btn-curious{
+    position: fixed;
+    bottom:120px;
+    right: 20px;
+    z-index: 10; 
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    animation: loader 8s infinite;
+    box-shadow: 0px 0px 1px 1px #0000001a;
+}
+#btn-curious:hover{
+    transform: scale(1.0);
+    cursor:pointer;
+    border: 2px solid burlywood;
+    animation:none
+}
+@keyframes loader {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+        rotate: 1.75turn;
+    }
+  }
+#btn-curious[listening]{
+    animation: pulse-animation 2s infinite;
+}
+@keyframes pulse-animation {
+    0% {
+      transform: scale(.5); 
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      transform: scale(1.0);
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+  }

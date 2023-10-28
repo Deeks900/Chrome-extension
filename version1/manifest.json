@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Regards Curiosity",
+    "version": "1.0",
+    "description": "A chrome extension for efficient internet browsing",
+    "icons": {
+        "16": "images/icon-16.png",
+        "32": "images/icon-16.png",
+        "48": "images/icon-16.png",
+        "128": "images/icon-128.jpeg"
+      },
+      "content_scripts":[
+        {
+            "js": ["scripts/popup.js", "scripts/content.js"],
+            "css": ["scripts/content.css"],
+            "matches":[
+                "*://*/*"
+            ]
+
+        }
+      ],
+      "web_accessible_resources": [{
+        "matches": ["<all_urls>"],
+        "resources": ["images/icon-16.png"]
+    }]
+  }
